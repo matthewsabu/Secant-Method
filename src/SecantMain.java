@@ -101,8 +101,8 @@ public class SecantMain {
         } else {
             System.out.println("\nA stopping criteria has been met--stopped iterating.");
             DecimalFormat df = new DecimalFormat("0.00");
-            if(xNewCurr > 0) df.setRoundingMode(RoundingMode.CEILING);
-            else df.setRoundingMode(RoundingMode.FLOOR);
+            if(xNewCurr > 0) df.setRoundingMode(RoundingMode.FLOOR);
+            else df.setRoundingMode(RoundingMode.CEILING);
             approxRoot = Double.parseDouble(df.format(xNewCurr));   //rootAsymp
             System.out.println("\nThe equation's root is approximately " + approxRoot);
         }  
