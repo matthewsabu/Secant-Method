@@ -52,7 +52,7 @@ public class SecantMethods implements SecantInterface{
         double xNext;
         double numerator = fxCurr*(xCurr-xPrev);
         double denominator = (fxCurr-fxPrev);
-        if(numerator == 0 || denominator == 0) xNext = 0;
+        if(numerator == 0 || denominator == 0) xNext = xCurr;
         else xNext = xCurr - (numerator/denominator);
         DecimalFormat df = new DecimalFormat("0.00000");
         if(xNext > 0) df.setRoundingMode(RoundingMode.FLOOR);
@@ -64,9 +64,13 @@ public class SecantMethods implements SecantInterface{
     @Override
     public double getE(double xNext, double xCurr) {
         double e = Math.abs(((xNext - xCurr)/xNext) * 100);
-        DecimalFormat df = new DecimalFormat("0.00000");
-        df.setRoundingMode(RoundingMode.FLOOR);
-        double truncatedE = Double.parseDouble(df.format(e));
+        double truncatedE = 0;
+        if(e != 0) {
+            DecimalFormat df = new DecimalFormat("0.00000");
+            df.setRoundingMode(RoundingMode.FLOOR);
+            truncatedE = Double.parseDouble(df.format(e));
+        }
+        //System.out.println(e);
         return truncatedE;
     }
     
